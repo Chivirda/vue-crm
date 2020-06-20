@@ -5,22 +5,22 @@
     </div>
     <section>
       <div class="row">
-        <CategeryCreate />
+        <CategoryCreate />
 
-        <CategeryEdit />
+        <CategoryEdit />
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import CategeryCreate from '@/components/CategeryCreate'
-import CategeryEdit from '@/components/CategeryEdit'
+import CategoryCreate from '@/components/CategoryCreate'
+import CategoryEdit from '@/components/CategoryEdit'
 
 export default {
   name: 'categories',
   components: {
-    CategeryCreate, CategeryEdit
+    CategoryCreate, CategoryEdit
   }  
 }
 </script>
