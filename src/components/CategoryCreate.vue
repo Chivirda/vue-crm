@@ -70,7 +70,11 @@ export default {
           title: this.title,
           limit: this.limit
         })
-        console.log(category)
+        this.$message(`Категория "${category.title}" была создана`)
+        this.title = ''
+        this.limit = 100
+        this.$v.$reset()
+        this.$emit('created', category)
       } catch(e) {}
     }
   }
