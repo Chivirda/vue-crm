@@ -8,7 +8,9 @@
       <div class="row" v-else>
         <CategoryCreate @created="addNewCategory" />
 
-        <CategoryEdit />
+        <CategoryEdit 
+          :categories="categories"
+        />
       </div>
     </section>
   </div>
@@ -26,7 +28,6 @@ export default {
   }),
   async mounted() {
     this.categories = await this.$store.dispatch('fetchCategories')
-    console.log(this.categories)
     this.loading = false
   },
   components: {
