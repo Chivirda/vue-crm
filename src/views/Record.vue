@@ -10,9 +10,12 @@
 
     <form class="form" v-else>
       <div class="input-field" >
-        <select ref="select">
+        <select ref="select" v-model="category">
           <option
-          >name cat</option>
+            v-for="c in categories"
+            :key="c.id"
+            :value="c.id"
+          >{{c.title}}</option>
         </select>
         <label>Выберите категорию</label>
       </div>
@@ -74,11 +77,20 @@ export default {
   data: () => ({
     loading: true,
     select: null,
-    categories: []
+    categories: [],
+    category: null
   }),
   async mounted() {
     this.categories = await this.$store.dispatch('fetchCategories')
     this.loading = false
+
+    if (this.categories.length) {
+      this.category = this.categories[0].id
+    }
+    
+    setTimeout(() => {
+      this.select = M.FormSelect.init(this.$refs.select)
+    }, 0)
   },
   destroyed() {
     if (this.select && this.select.destroy) {
